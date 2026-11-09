@@ -117,6 +117,9 @@
     "enemyHealth": "stamina",
     "damage": "2",
     "marginDamage": [],
+    "shown": [
+      "luck"
+    ],
     "formula": "# Fighting Fantasy: the higher roll wounds\nmine = 2d6 + me.skill + me.bonus\ntheirs = 2d6 + enemy.skill + enemy.bonus\nif mine > theirs: enemy.stamina -= 2\nif theirs > mine: me.stamina -= 2"
   },
   "sectionPatterns": [
