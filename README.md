@@ -32,7 +32,7 @@ kept, each definition whole, and inflected forms are indexed for lookup.
 Releases: `dictionaries-2026-11-06` (first packs), `dictionaries-2026-11-06.2`
 (complete Wiktionary packs; Italian from Wiktionary first).
 
-## Gamebook rule presets (`rulesets/`)
+## Gamebook rule presets (`plugins/gamebook/rulesets/`)
 
 Ready rule sets for a gamebook series, read in the reader's Gamebook plugin
 under **Presets…**. `index.json` lists them; each `<series>.json` is a rule
