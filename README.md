@@ -31,3 +31,12 @@ kept, each definition whole, and inflected forms are indexed for lookup.
 
 Releases: `dictionaries-2026-11-06` (first packs), `dictionaries-2026-11-06.2`
 (complete Wiktionary packs; Italian from Wiktionary first).
+
+## Gamebook rule presets (`rulesets/`)
+
+Ready rule sets for a gamebook series, read in the reader's Gamebook plugin
+under **Presets…**. `index.json` lists them; each `<series>.json` is a rule
+set (stats, places and starting items, traits, rolls and the round formula).
+They carry only the numbers, never the books' rules text, and are written by
+the app's `tool/gamebook/build_presets_test.dart`; a new series is a new file
+plus its entry in `index.json`, so no app release is needed.

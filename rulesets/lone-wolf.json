@@ -1,0 +1,182 @@
+{
+  "name": "Lone Wolf",
+  "stats": [
+    {
+      "id": "endurance",
+      "label": "Endurance",
+      "start": 25,
+      "min": 0,
+      "max": 60,
+      "description": "Your life: 20 + a random number 0–9 at the start. At 0 you die."
+    },
+    {
+      "id": "combat_skill",
+      "label": "Combat Skill",
+      "start": 15,
+      "min": 0,
+      "max": 40,
+      "description": "Your fighting skill: 10 + a random number 0–9 at the start."
+    }
+  ],
+  "slots": 2,
+  "locations": [
+    {
+      "id": "weapons",
+      "label": "Weapons",
+      "slots": 2,
+      "description": "At most two weapons. Fighting without one: Combat Skill −4 (the Unarmed trait).",
+      "items": [
+        {
+          "name": "Axe",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "pack",
+      "label": "Backpack",
+      "slots": 8,
+      "items": [
+        {
+          "name": "Meal",
+          "count": 1,
+          "description": "Eat one when the book says so, or lose 3 Endurance."
+        },
+        {
+          "name": "Healing Potion",
+          "count": 0,
+          "description": "Laumspur and the like: Endurance +4 when used after a fight.",
+          "effects": {
+            "endurance": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "pouch",
+      "label": "Belt pouch",
+      "slots": 50,
+      "description": "Gold Crowns, at most 50.",
+      "items": [
+        {
+          "name": "Gold Crowns",
+          "count": 0,
+          "max": 50
+        }
+      ]
+    },
+    {
+      "id": "special",
+      "label": "Special Items",
+      "slots": 12,
+      "description": "Carried apart from the Backpack: maps, keys, the book's special things.",
+      "items": [
+        {
+          "name": "Map of Sommerlund",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "head",
+      "label": "Head",
+      "slots": 1
+    },
+    {
+      "id": "body",
+      "label": "Body",
+      "slots": 1
+    }
+  ],
+  "level": true,
+  "traits": [
+    {
+      "name": "Camouflage",
+      "description": "Blend into the surroundings and pass for a local."
+    },
+    {
+      "name": "Hunting",
+      "description": "Never go hungry in the wild: no Meal needed there."
+    },
+    {
+      "name": "Sixth Sense",
+      "description": "Warns of danger and hidden purposes."
+    },
+    {
+      "name": "Tracking",
+      "description": "Read tracks and find the right path."
+    },
+    {
+      "name": "Healing",
+      "description": "Endurance +1 for each section passed without a fight."
+    },
+    {
+      "name": "Weaponskill",
+      "description": "Combat Skill +2 while fighting with the weapon you mastered.",
+      "effects": {
+        "combat_skill": 2
+      }
+    },
+    {
+      "name": "Mindshield",
+      "description": "No loss of Combat Skill to an enemy's psychic attack."
+    },
+    {
+      "name": "Mindblast",
+      "description": "Combat Skill +2 in a fight, unless the enemy is immune.",
+      "effects": {
+        "combat_skill": 2
+      }
+    },
+    {
+      "name": "Animal Kinship",
+      "description": "Speak with some animals and sense their intent."
+    },
+    {
+      "name": "Mind Over Matter",
+      "description": "Move small things with the mind."
+    },
+    {
+      "name": "Unarmed",
+      "description": "No weapon in hand: Combat Skill −4. Remove it when you take a weapon.",
+      "effects": {
+        "combat_skill": -4
+      }
+    }
+  ],
+  "dice": "d10-1",
+  "combat": {
+    "kind": "contested",
+    "playerStat": "combat_skill",
+    "enemyStat": "combat_skill",
+    "playerHealth": "endurance",
+    "enemyHealth": "endurance",
+    "damage": "2",
+    "marginDamage": [],
+    "formula": "# Lone Wolf: the combat ratio picks a column, a random number 0-9 the row;\n# each cell is enemy/you loss, K kills.\nratio = me.combat_skill + me.bonus - enemy.combat_skill - enemy.bonus\nn = d10 - 1\nloss = crt(ratio, n)\nenemy.endurance -= loss[0]\nme.endurance -= loss[1]\n\ntable crt\n     <=-11  -10..-9  -8..-7  -6..-5  -4..-3  -2..-1  0     1..2  3..4  5..6  7..8  9..10  >=11\n  0  6/0    7/0      8/0     9/0     10/0    11/0    12/0  12/0  14/0  16/0  18/0  K/0    K/0\n  1  0/K    0/K      0/8     0/6     1/6     2/5     3/5   4/5   5/4   6/4   7/4   8/3    9/3\n  2  0/K    0/8      0/7     1/6     2/5     3/5     4/4   5/4   6/3   7/3   8/3   9/3    10/2\n  3  0/8    0/7      1/6     2/5     3/5     4/4     5/4   6/3   7/3   8/3   9/2   10/2   11/2\n  4  0/8    1/7      2/6     3/5     4/4     5/4     6/3   7/3   8/2   9/2   10/2  11/2   12/2\n  5  1/7    2/6      3/5     4/4     5/4     6/3     7/2   8/2   9/2   10/2  11/2  12/2   14/1\n  6  2/6    3/6      4/5     5/4     6/3     7/2     8/2   9/2   10/2  11/1  12/1  14/1   16/1\n  7  3/5    4/5      5/4     6/3     7/2     8/2     9/1   10/1  11/1  12/0  14/0  16/0   18/0\n  8  4/4    5/4      6/3     7/2     8/1     9/1     10/0  11/0  12/0  14/0  16/0  18/0   K/0\n  9  5/3    6/3      7/2     8/0     9/0     10/0    11/0  12/0  14/0  16/0  18/0  K/0    K/0\nend"
+  },
+  "sectionPatterns": [
+    "turn to {n}",
+    "go to {n}",
+    "go to section {n}",
+    "section {n}",
+    "paragraph {n}",
+    "vai al {n}",
+    "va' al {n}",
+    "recati al {n}",
+    "sezione {n}",
+    "paragrafo {n}",
+    "ve al {n}",
+    "vete al {n}",
+    "pasa al {n}",
+    "sección {n}",
+    "párrafo {n}",
+    "rendez-vous au {n}",
+    "allez au {n}",
+    "paragraphe {n}"
+  ],
+  "rolls": [
+    "d10-1"
+  ],
+  "v": 2
+}

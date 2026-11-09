@@ -1,0 +1,125 @@
+{
+  "name": "Fabled Lands",
+  "stats": [
+    {
+      "id": "stamina",
+      "label": "Stamina",
+      "start": 9,
+      "min": 0,
+      "max": 99
+    },
+    {
+      "id": "rank",
+      "label": "Rank",
+      "start": 1,
+      "min": 1,
+      "max": 10
+    },
+    {
+      "id": "combat",
+      "label": "Combat",
+      "start": 4,
+      "min": 1,
+      "max": 20
+    },
+    {
+      "id": "defence",
+      "label": "Defence",
+      "start": 6,
+      "min": 0,
+      "max": 30,
+      "description": "Combat + Rank + your armour's bonus."
+    },
+    {
+      "id": "charisma",
+      "label": "Charisma",
+      "start": 2,
+      "min": 1,
+      "max": 20
+    },
+    {
+      "id": "magic",
+      "label": "Magic",
+      "start": 2,
+      "min": 1,
+      "max": 20
+    },
+    {
+      "id": "sanctity",
+      "label": "Sanctity",
+      "start": 2,
+      "min": 1,
+      "max": 20
+    },
+    {
+      "id": "scouting",
+      "label": "Scouting",
+      "start": 2,
+      "min": 1,
+      "max": 20
+    },
+    {
+      "id": "thievery",
+      "label": "Thievery",
+      "start": 2,
+      "min": 1,
+      "max": 20
+    }
+  ],
+  "slots": 12,
+  "locations": [
+    {
+      "id": "pack",
+      "label": "Possessions",
+      "slots": 12,
+      "description": "At most 12 possessions."
+    },
+    {
+      "id": "purse",
+      "label": "Purse",
+      "slots": 0,
+      "items": [
+        {
+          "name": "Shards",
+          "count": 16
+        }
+      ]
+    }
+  ],
+  "dice": "2d6",
+  "combat": {
+    "kind": "contested",
+    "playerStat": "combat",
+    "enemyStat": "combat",
+    "playerHealth": "stamina",
+    "enemyHealth": "stamina",
+    "damage": "2",
+    "marginDamage": [],
+    "formula": "# Fabled Lands: a roll above the other's Defence wounds by the difference.\nmine = 2d6 + me.combat + me.bonus\ntheirs = 2d6 + enemy.combat + enemy.bonus\nif mine > enemy.defence: enemy.stamina -= mine - enemy.defence\nif theirs > me.defence: me.stamina -= theirs - me.defence"
+  },
+  "sectionPatterns": [
+    "turn to {n}",
+    "go to {n}",
+    "go to section {n}",
+    "section {n}",
+    "paragraph {n}",
+    "vai al {n}",
+    "va' al {n}",
+    "recati al {n}",
+    "sezione {n}",
+    "paragrafo {n}",
+    "ve al {n}",
+    "vete al {n}",
+    "pasa al {n}",
+    "sección {n}",
+    "párrafo {n}",
+    "rendez-vous au {n}",
+    "allez au {n}",
+    "paragraphe {n}"
+  ],
+  "rolls": [
+    "2d6",
+    "1d6"
+  ],
+  "v": 2
+}

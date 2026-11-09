@@ -1,0 +1,147 @@
+{
+  "name": "The Warlock of Firetop Mountain",
+  "stats": [
+    {
+      "id": "stamina",
+      "label": "Stamina",
+      "start": 19,
+      "min": 0,
+      "max": 24
+    },
+    {
+      "id": "skill",
+      "label": "Skill",
+      "start": 10,
+      "min": 1,
+      "max": 12
+    },
+    {
+      "id": "luck",
+      "label": "Luck",
+      "start": 10,
+      "min": 0,
+      "max": 12
+    }
+  ],
+  "slots": 10,
+  "locations": [
+    {
+      "id": "pack",
+      "label": "Backpack",
+      "slots": 10,
+      "items": [
+        {
+          "name": "Provisions",
+          "count": 10,
+          "description": "Eat one when the book allows: Stamina +4.",
+          "effects": {
+            "stamina": 4
+          }
+        },
+        {
+          "name": "Potion of Skill",
+          "count": 0,
+          "description": "Restores Skill to its start value.",
+          "restores": [
+            "skill"
+          ]
+        },
+        {
+          "name": "Potion of Strength",
+          "count": 0,
+          "description": "Restores Stamina to its start value.",
+          "restores": [
+            "stamina"
+          ]
+        },
+        {
+          "name": "Potion of Fortune",
+          "count": 0,
+          "description": "Restores Luck to its start value.",
+          "restores": [
+            "luck"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pouch",
+      "label": "Belt pouch",
+      "slots": 0,
+      "items": [
+        {
+          "name": "Gold Pieces",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "id": "body",
+      "label": "Body",
+      "slots": 1,
+      "items": [
+        {
+          "name": "Leather Armour",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "hands",
+      "label": "Hands",
+      "slots": 2,
+      "items": [
+        {
+          "name": "Sword",
+          "count": 1
+        },
+        {
+          "name": "Lantern",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "keys",
+      "label": "Keys",
+      "slots": 0,
+      "description": "The keys found on the way: their numbers open the Warlock's chest."
+    }
+  ],
+  "dice": "2d6",
+  "combat": {
+    "kind": "contested",
+    "playerStat": "skill",
+    "enemyStat": "skill",
+    "playerHealth": "stamina",
+    "enemyHealth": "stamina",
+    "damage": "2",
+    "marginDamage": [],
+    "formula": "# Fighting Fantasy: the higher roll wounds\nmine = 2d6 + me.skill + me.bonus\ntheirs = 2d6 + enemy.skill + enemy.bonus\nif mine > theirs: enemy.stamina -= 2\nif theirs > mine: me.stamina -= 2"
+  },
+  "sectionPatterns": [
+    "turn to {n}",
+    "go to {n}",
+    "go to section {n}",
+    "section {n}",
+    "paragraph {n}",
+    "vai al {n}",
+    "va' al {n}",
+    "recati al {n}",
+    "sezione {n}",
+    "paragrafo {n}",
+    "ve al {n}",
+    "vete al {n}",
+    "pasa al {n}",
+    "sección {n}",
+    "párrafo {n}",
+    "rendez-vous au {n}",
+    "allez au {n}",
+    "paragraphe {n}"
+  ],
+  "rolls": [
+    "2d6",
+    "1d6"
+  ],
+  "v": 2
+}

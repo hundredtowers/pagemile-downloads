@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "presets": [
+    {
+      "file": "fighting-fantasy.json",
+      "name": "Fighting Fantasy",
+      "series": "Fighting Fantasy",
+      "language": "en",
+      "description": "Skill, Stamina and Luck; the higher roll wounds; potions and provisions."
+    },
+    {
+      "file": "warlock-of-firetop-mountain.json",
+      "name": "The Warlock of Firetop Mountain",
+      "series": "Fighting Fantasy",
+      "language": "en",
+      "description": "Fighting Fantasy book 1: Sword, Leather Armour and a Lantern, 10 Provisions, one potion, and a place for the keys."
+    },
+    {
+      "file": "lone-wolf.json",
+      "name": "Lone Wolf",
+      "series": "Lone Wolf",
+      "language": "en",
+      "description": "Combat Skill and Endurance, the Kai Disciplines, the Combat Results Table."
+    },
+    {
+      "file": "fabled-lands.json",
+      "name": "Fabled Lands",
+      "series": "Fabled Lands",
+      "language": "en",
+      "description": "Rank, Combat, Defence and the five abilities; a hit beats the Defence."
+    }
+  ]
+}
