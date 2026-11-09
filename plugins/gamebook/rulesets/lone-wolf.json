@@ -112,10 +112,7 @@
     },
     {
       "name": "Weaponskill",
-      "description": "Combat Skill +2 while fighting with the weapon you mastered.",
-      "effects": {
-        "combat_skill": 2
-      }
+      "description": "Combat Skill +2 while fighting with the weapon you mastered: give that weapon Combat Skill +2 when used, and pick it in the fight."
     },
     {
       "name": "Mindshield",
