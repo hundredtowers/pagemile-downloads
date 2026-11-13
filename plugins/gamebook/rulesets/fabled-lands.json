@@ -95,7 +95,7 @@
     "enemyHealth": "stamina",
     "damage": "2",
     "marginDamage": [],
-    "formula": "# Fabled Lands: a roll above the other's Defence wounds by the difference.\nmine = 2d6 + me.combat + me.bonus\ntheirs = 2d6 + enemy.combat + enemy.bonus\nif mine > enemy.defence: enemy.stamina -= mine - enemy.defence\nif theirs > me.defence: me.stamina -= theirs - me.defence"
+    "formula": "# Fabled Lands: a roll above other's Defence wounds by difference.\n# Against several at once, each enemy attacks; you wound only the ones you attack.\nmine = 2d6 + me.combat + me.bonus\nfor enemy:\n  theirs = 2d6 + enemy.combat + enemy.bonus\n  if mine > enemy.defence and target: enemy.stamina -= mine - enemy.defence\n  if theirs > me.defence: me.stamina -= theirs - me.defence\nend"
   },
   "sectionPatterns": [
     "turn to {n}",

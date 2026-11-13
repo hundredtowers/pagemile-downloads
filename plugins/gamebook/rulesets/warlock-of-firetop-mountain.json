@@ -120,7 +120,7 @@
     "shown": [
       "luck"
     ],
-    "formula": "# Fighting Fantasy: the higher roll wounds\nmine = 2d6 + me.skill + me.bonus\ntheirs = 2d6 + enemy.skill + enemy.bonus\nif mine > theirs: enemy.stamina -= 2\nif theirs > mine: me.stamina -= 2"
+    "formula": "# Fighting Fantasy: higher roll wounds\n# Against several at once, each enemy rolls; you wound only the ones you attack.\nmine = 2d6 + me.skill + me.bonus\nfor enemy:\n  theirs = 2d6 + enemy.skill + enemy.bonus\n  if mine > theirs and target: enemy.stamina -= 2\n  if theirs > mine: me.stamina -= 2\nend"
   },
   "sectionPatterns": [
     "turn to {n}",
